@@ -6,6 +6,7 @@
     <title>Muhammad Awais | Software Engineer in Test</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="muhammad_awais.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -115,30 +116,107 @@
         .hero-content {
             text-align: center;
             z-index: 2;
-            max-width: 900px;
+            max-width: 1000px;
             padding: 0 24px;
         }
 
-        .hero-text {
-            font-size: clamp(2.5rem, 8vw, 5rem);
+        .hero-name {
+            font-size: clamp(3.5rem, 12vw, 7rem);
             font-weight: 700;
-            line-height: 1.2;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .text-animated {
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(90deg, var(--text-primary) 0%, var(--text-primary) 50%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1s ease-out forwards;
             opacity: 0;
-            animation: fadeSlideIn 1.5s ease forwards;
         }
 
-        .text-animated.fade-out {
-            animation: fadeSlideOut 1.5s ease forwards;
+        .hero-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            animation: slideUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+            letter-spacing: 0.5px;
         }
 
-        @keyframes fadeSlideIn {
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+            animation: slideUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .hero-btn {
+            padding: 14px 36px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+            border: none;
+        }
+
+        .hero-btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-emerald));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .hero-btn-primary:hover::before {
+            left: 0;
+        }
+
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(6, 182, 212, 0.15);
+        }
+
+        @keyframes slideUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -149,15 +227,23 @@
             }
         }
 
-        @keyframes fadeSlideOut {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.02;
+            z-index: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 50px, var(--accent-blue) 50px, var(--accent-blue) 51px),
+                repeating-linear-gradient(90deg, transparent, transparent 50px, var(--accent-cyan) 50px, var(--accent-cyan) 51px);
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
         .gradient-text {
@@ -576,9 +662,14 @@
     <div class="glow-orb orb-3"></div>
 
     <section class="hero">
+        <div class="bg-pattern"></div>
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="text-animated gradient-text" id="heroText"></h1>
+            <h1 class="hero-name">Muhammad Awais</h1>
+            <div class="hero-title">Software Engineer in Test</div>
+            <p class="hero-description">Architecting quality through intelligent automation. Transforming how teams deliver excellence with Playwright, TypeScript, and CI/CD mastery.</p>
+            <div class="hero-cta">
+                <a href="#about" class="hero-btn hero-btn-primary">Explore Work</a>
+                <a href="https://linkedin.com/in/mawaisqayoom" class="hero-btn hero-btn-secondary" target="_blank">View LinkedIn</a>
             </div>
         </div>
         <div class="scroll-indicator"></div>
@@ -787,7 +878,7 @@
 
     <footer>
         <div class="contact-info">
-            <a href="mailto:muhammadawaisqayoom@gmail.com" class="contact-item">muhammadawaisqayoom@gmail.com</a>
+            <a href="mailto:aawiii63@gmail.com" class="contact-item">aawiii63@gmail.com</a>
             <a href="https://linkedin.com/in/mawaisqayoom" class="contact-item" target="_blank">LinkedIn</a>
             <span class="contact-item">Berlin, Germany</span>
         </div>
@@ -795,31 +886,6 @@
     </footer>
 
     <script>
-        const heroTexts = [
-            "Hi, I'm Muhammad Awais",
-            "I'm a Software Engineer in Test with 3+ years of experience"
-        ];
-
-        let currentTextIndex = 0;
-        const heroTextElement = document.getElementById('heroText');
-
-        function animateText() {
-            heroTextElement.classList.remove('fade-out');
-            heroTextElement.classList.add('text-animated');
-            heroTextElement.textContent = heroTexts[currentTextIndex];
-
-            setTimeout(() => {
-                heroTextElement.classList.add('fade-out');
-            }, 4000);
-
-            setTimeout(() => {
-                currentTextIndex = (currentTextIndex + 1) % heroTexts.length;
-                animateText();
-            }, 5500);
-        }
-
-        animateText();
-
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
